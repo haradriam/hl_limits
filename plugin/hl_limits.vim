@@ -3,13 +3,13 @@ let g:HlLimits = 1
 fun! HlLimitsUpdate()
     if g:HlLimits == 1
         highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-        match OverLength /\%81v.*/ 
+        match OverLength /\%82v.*/
     else
         match
     end
 endfunction
 
-fun! HlLimitsShow() 
+fun! HlLimitsShow()
     let g:HlLimits = 1
     call HlLimitsUpdate()
 endfunction
