@@ -1,21 +1,26 @@
-let g:HlLimits = 1
+let g:hl_limits = 1
+
+if !exists("g:hl_limits_columns")
+    let g:hl_limits_columns = 80
+endif
 
 fun! HlLimitsUpdate()
-    if g:HlLimits == 1
+    if g:hl_limits == 1
+        let l:hl_limits_tmp = g:hl_limits_columns + 2
         highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-        match OverLength /\%82v.*/
+        execute 'match OverLength /\%' . l:hl_limits_tmp . 'v.*/'
     else
-        match
+        match OverLength //
     end
 endfunction
 
 fun! HlLimitsShow()
-    let g:HlLimits = 1
+    let g:hl_limits = 1
     call HlLimitsUpdate()
 endfunction
 
 fun! HlLimitsHide()
-    let g:HlLimits = 0
+    let g:hl_limits = 0
     call HlLimitsUpdate()
 endfunction
 
